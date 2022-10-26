@@ -1,4 +1,4 @@
-import { AssetSymbol, ChainKey, moonbase } from '@moonbeam-network/xcm-config';
+import { AssetSymbol, ChainKey } from '@moonbeam-network/xcm-config';
 import { init, toDecimal } from '@moonbeam-network/xcm-sdk';
 import { Keyring } from '@polkadot/api';
 import { ethers } from 'ethers';
@@ -10,25 +10,25 @@ dotenv.config();
 /**
  * Add your moonbeam private key
  */
-const moonbeamPrivateKey = process.env.MOONBEAM_PRIVATE_KEY!;
+ const moonbeamPrivateKey = process.env.MOONBEAM_PRIVATE_KEY!;
 
-/**
- * Add your polkadot menmonic or private key
- */
-const polkadotSuri = process.env.POLKADOT_SURI!;
+ /**
+  * Add your polkadot menmonic or private key
+  */
+ const polkadotSuri = process.env.POLKADOT_SURI!;
 
 // ===========================================================================
 
 const dot = AssetSymbol.DOT;
 const polkadot = ChainKey.Polkadot;
 
-// const { moonbeam } = init();
+const { moonbeam } = init();
 
 const keyring = new Keyring({ type: 'sr25519' });
 
-const provider = new ethers.providers.WebSocketProvider(moonbase.moonChain.ws, {
-  name: moonbase.moonChain.name,
-  chainId: moonbase.moonChain.chainId,
+const provider = new ethers.providers.WebSocketProvider(moonbeam.moonChain.ws, {
+  name: moonbeam.moonChain.name,
+  chainId: moonbeam.moonChain.chainId,
 });
 const ethersSigner = new ethers.Wallet(moonbeamPrivateKey, provider);
 
@@ -37,7 +37,7 @@ const ethersSigner = new ethers.Wallet(moonbeamPrivateKey, provider);
 async function deposit() {
   const pair = keyring.addFromUri(polkadotSuri);
 
-  const { chains, from } = moonbase.deposit(dot);
+  const { chains, from } = moonbeam.deposit(dot);
 
   console.log(
     `\nYou can deposit ${dot} from these chains: `,
@@ -61,7 +61,7 @@ async function deposit() {
 }
 
 async function withdraw() {
-  const { chains, to } = moonbase.withdraw(dot);
+  const { chains, to } = moonbeam.withdraw(dot);
   const polkadotAddress = keyring.getPairs().at(0)?.address!;
 
   console.log(
@@ -87,7 +87,7 @@ async function main() {
   console.log('starting...');
 
   const thirtySeconds = 30 * 1000;
-  const unsubscribe = await moonbase.subscribeToAssetsBalanceInfo(
+  const unsubscribe = await moonbeam.subscribeToAssetsBalanceInfo(
     ethersSigner.address,
     (balances) => {
       console.log('\nUpdated balances:');

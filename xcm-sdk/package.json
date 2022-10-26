@@ -11,11 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@moonbeam-network/xcm-config": "^0.0.25",
-    "@moonbeam-network/xcm-sdk": "^0.0.25",
-    "@polkadot/api": "^9.5.1",
+    "@moonbeam-network/xcm-config": "^0.1.0",
+    "@moonbeam-network/xcm-sdk": "^0.1.0",
+    "@polkadot/api": "^9.6.1",
     "dotenv": "^16.0.3",
-    "ethers": "^5.7.1"
+    "ethers": "^5.7.2"
   },
   "devDependencies": {
     "ts-node": "^10.9.1"
