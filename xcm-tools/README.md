@@ -26,6 +26,60 @@ ts-node src/calc_multilocation_derivative.ts -w <target_ws_endpoint> -a <origin_
 
 # gets a list of XC-20 assets in the given network. Returns the name, symbol, decimals and token's precompile address.
 ts-node src/fetch_xc20_assets.ts -w <ws_endpoint>
+
+# calculates the derivative addres sof a given index
+ts-node src/calc_derived_address.ts
+
+# prints the latest finalized block in the provided chain
+ts-node src/get_block_finality.ts
+
+# checks if a given Tx Hash has been finalized 
+ts-node src/check_tx_finality.ts
+
+# create ECDSA account with Polkadot Keyring
+ts-node src/create_ecdsa_acc.ts
+
+# create a number of SR25519 with a given prefix, they are saved into a JSON file
+ts-node src/create_sr25519_acc.ts
+
+# show encode and decode functionity for substrate accounts
+ts-node src/encode_decode_address.ts
+
+# estimates the transaction fee for a given call
+ts-node src/estimate_tx_fee.ts
+
+# prints the private key of a JSON file (DO NOT SHARE YOUR PRIVATE KEY)
+ts-node src/get_acc_from_json.ts
+
+# derives the Ethereum address (for a given index) from a mnemonic using the m/44/60/0/0/0 derivation path and logs the associated private key. Also derives the Substrate generic address with the //hard/soft derivation path
+ts-node src/get_address_from_mnemonic.ts
+
+# fetches all balance transfer events via the Substrate API
+ts-node src/get_balance_events.ts
+
+# gets a substrate block with a given hash
+ts-node src/get_block.ts
+
+# retrieve and save in a JSON file all Crowdloan rewards information for a given network
+ts-node src/get_crowdloan_cont_address.ts
+
+# shows the Ethereum address associated to a private key
+ts-node src/get_eth_address_from_privkey.ts
+
+# fetches all the addresses that are staking and their total in either moonbeam or moonriver (input with yargs like node getStakingAddress.js --network moonbeam)
+ts-node src/get_staking_address.ts
+
+# gets staking data from all collators
+ts-node src/get_staking_data.ts
+
+# nests as derivative calls to as many levels as desired and provided the encoded call data
+ts-node src/nest_as_derivatives.ts
+
+# send a simple tx using the Substrate API, only works with SR25519 accounts (not Moonriver!). You need to provide the origin account mnemonic. Not safe for production!
+ts-node src/send_substrate_tx.ts
+
+# verifys a signed message by providing the signers public Address, the message and the signed message
+ts-node src/verify_message.ts
 ```
 
 ## Examples
