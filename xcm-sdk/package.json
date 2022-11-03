@@ -11,9 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@moonbeam-network/xcm-config": "^0.1.0",
-    "@moonbeam-network/xcm-sdk": "^0.1.0",
-    "@polkadot/api": "^9.6.1",
+    "@moonbeam-network/xcm-config": "^0.1.1",
+    "@moonbeam-network/xcm-sdk": "^0.1.1",
+    "@polkadot/api": "^9.6.2",
     "dotenv": "^16.0.3",
     "ethers": "^5.7.2"
   },
